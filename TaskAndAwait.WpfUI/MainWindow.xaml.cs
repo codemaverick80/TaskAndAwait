@@ -33,8 +33,44 @@ namespace TaskAndAwait.WpfUI
         {
             ClearListBox();
             Task<List<Person>> peopleTask = repository.Get();
-            peopleTask.ContinueWith(FillListBox,
+
+            /* ****************WRONG***************************
+             * DO NOT use below code,it will lockup our UI
+             * 
+             *********************************************/
+
+            //List<Person> personlist= peopleTask.Result;
+            // foreach (var person in personlist)
+            // {
+            //     PersonListBox.Items.Add(person);
+            // }
+
+
+
+            /* *****************WRONG**************************
+             * Below code will throw an exception
+             * Exception: The calling thread cannot access this object because a different thread owns it.
+             * 
+             *********************************************/
+            //peopleTask.ContinueWith(FillListBox);
+
+
+            /* *****************OK**************************
+             * Below code will run fine
+             * 
+             *********************************************/
+            //peopleTask.ContinueWith(FillListBox,
+            //    TaskScheduler.FromCurrentSynchronizationContext());
+
+            peopleTask.ContinueWith((Task<List<Person>> t) =>
+                {
+                    List<Person> people = peopleTask.Result;
+                    foreach (var person in people)
+                        PersonListBox.Items.Add(person);
+                },
                 TaskScheduler.FromCurrentSynchronizationContext());
+
+
         }
 
         private void FillListBox(Task<List<Person>> peopleTask)

@@ -11,7 +11,6 @@ namespace TaskAndAwait.Library
 {
     public class PersonRepository
     {
-
         public async Task<List<Person>> Get()
         {
 
@@ -28,8 +27,6 @@ namespace TaskAndAwait.Library
             }
 
         }
-
-
         public async Task<Person> Get(int id)
         {
             using (var client=new HttpClient())
@@ -44,16 +41,13 @@ namespace TaskAndAwait.Library
             }
 
         }
-
-
         private static void InitializeClient(HttpClient client)
         {
             client.BaseAddress = new Uri("http://localhost:53322/");
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
         }
-
-
+      
     }
 
 
