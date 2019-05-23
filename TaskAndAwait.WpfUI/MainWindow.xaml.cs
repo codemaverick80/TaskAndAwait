@@ -34,6 +34,8 @@ namespace TaskAndAwait.WpfUI
             ClearListBox();
             Task<List<Person>> peopleTask = repository.Get();
 
+            #region "Comments"
+
             /* ****************WRONG***************************
              * DO NOT use below code,it will lockup our UI
              * 
@@ -62,7 +64,9 @@ namespace TaskAndAwait.WpfUI
             //peopleTask.ContinueWith(FillListBox,
             //    TaskScheduler.FromCurrentSynchronizationContext());
 
-            peopleTask.ContinueWith((Task<List<Person>> t) =>
+            #endregion
+
+            peopleTask.ContinueWith(t =>
                 {
                     List<Person> people = peopleTask.Result;
                     foreach (var person in people)
@@ -73,16 +77,32 @@ namespace TaskAndAwait.WpfUI
 
         }
 
-        private void FillListBox(Task<List<Person>> peopleTask)
-        {
-            List<Person> people = peopleTask.Result;
-            foreach (var person in people)
-                PersonListBox.Items.Add(person);
-        }
+        //private void FillListBox(Task<List<Person>> peopleTask)
+        //{
+        //    List<Person> people = peopleTask.Result;
+        //    foreach (var person in people)
+        //        PersonListBox.Items.Add(person);
+        //}
 
-        private void FetchWithAwaitButton_Click(object sender, RoutedEventArgs e)
+
+
+        /*
+         * await looks much easier then Task, however await will not fullfill all of our need. there will situation where we 
+         * want take more control over the process. for example, we may have multiple child tasks that all run at the same time or
+         * we want to more controll over the cancellation process
+         */ 
+        private async void FetchWithAwaitButton_Click(object sender, RoutedEventArgs e)
         {
             ClearListBox();
+            List<Person> people = await repository.Get();
+
+            foreach (var person in people)
+            {
+                PersonListBox.Items.Add(person);
+            }
+
+
+
         }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
