@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskAndAwait.Library", "Tas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskAndAwait.WpfUI", "TaskAndAwait.WpfUI\TaskAndAwait.WpfUI.csproj", "{5001B0DD-2B47-45AC-9DA3-F126EC003479}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskAndAwait.ConsoleTester", "TaskAndAwait.ConsoleTester\TaskAndAwait.ConsoleTester.csproj", "{D8797DD5-0B60-41D5-A4C7-D9F1314B6DAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{5001B0DD-2B47-45AC-9DA3-F126EC003479}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5001B0DD-2B47-45AC-9DA3-F126EC003479}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5001B0DD-2B47-45AC-9DA3-F126EC003479}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8797DD5-0B60-41D5-A4C7-D9F1314B6DAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8797DD5-0B60-41D5-A4C7-D9F1314B6DAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8797DD5-0B60-41D5-A4C7-D9F1314B6DAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8797DD5-0B60-41D5-A4C7-D9F1314B6DAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
