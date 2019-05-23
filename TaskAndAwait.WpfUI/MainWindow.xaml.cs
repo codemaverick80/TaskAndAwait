@@ -62,7 +62,8 @@ namespace TaskAndAwait.WpfUI
             //peopleTask.ContinueWith(FillListBox,
             //    TaskScheduler.FromCurrentSynchronizationContext());
 
-            peopleTask.ContinueWith((Task<List<Person>> t) =>
+            //peopleTask.ContinueWith((Task<List<Person>> t) =>
+            peopleTask.ContinueWith(t =>
                 {
                     List<Person> people = peopleTask.Result;
                     foreach (var person in people)
@@ -73,12 +74,12 @@ namespace TaskAndAwait.WpfUI
 
         }
 
-        private void FillListBox(Task<List<Person>> peopleTask)
-        {
-            List<Person> people = peopleTask.Result;
-            foreach (var person in people)
-                PersonListBox.Items.Add(person);
-        }
+        //private void FillListBox(Task<List<Person>> peopleTask)
+        //{
+        //    List<Person> people = peopleTask.Result;
+        //    foreach (var person in people)
+        //        PersonListBox.Items.Add(person);
+        //}
 
         private void FetchWithAwaitButton_Click(object sender, RoutedEventArgs e)
         {
